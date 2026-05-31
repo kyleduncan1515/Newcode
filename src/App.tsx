@@ -69,66 +69,35 @@ function App() {
       </div>
 
       <div className="pricing-grid">
-        {pricingPlans.map((plan, index) => (
-          <div
-            key={index}
-            className={`pricing-card ${plan.popular ? 'popular' : ''}`}
-          >
-            {plan.popular && <div className="popular-badge">Most Popular</div>}
-
-            <div className="plan-header">
-              <h3>{plan.name}</h3>
-              <div className="price">
-                <span className="amount">{plan.price}</span>
-                <span className="period">/{plan.period}</span>
-              </div>
-            </div>
-
-            <ul className="features-list">
-              {plan.features.map((feature, featureIndex) => (
-                <li key={featureIndex}>
-                  <svg
-                    className="check-icon"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href={plan.stripeLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`subscribe-btn ${plan.popular ? 'popular-btn' : ''}`}
-              style={{
-                display: 'block',
-                textAlign: 'center',
-                textDecoration: 'none',
-                boxSizing: 'border-box',
-              }}
+          {pricingPlans.map((plan, index) => (
+            <div
+              key={index}
+              className={`pricing-card ${plan.popular ? 'popular' : ''}`}
             >
-              Get Started
-            </a>
-          </div>
-        ))}
-      </div>
+              {plan.popular && <span className="popular-badge">Most Popular</span>}
+              <h3>{plan.name}</h3>
+              <p className="price">{plan.price}<span>/month</span></p>
+              <p className="description">{plan.description}</p>
+              
+              <a 
+                href={plan.stripeLink} 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 block w-full rounded-md bg-slate-800 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-700 transition"
+              >
+                Start {plan.name.split(' ')[0]} →
+              </a>
 
-      <div className="pricing-footer">
-        <p>All plans include a 14-day free trial. Cancel anytime.</p>
-        <p>
-          Secure payments powered by <strong>Stripe</strong>
-        </p>
+              <ul className="features-list">
+                {plan.features.map((feature, fIndex) => (
+                  <li key={fIndex}>{feature}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
 export default App;
