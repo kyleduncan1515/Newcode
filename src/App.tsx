@@ -22,8 +22,8 @@ const pricingPlans: PricingPlan[] = [
       'No writing, no agency, no contracts',
       'Results may vary based on market competition and website factors',
       'Cancel anytime',
-    ]
-    ,stripeLink: 
+    ],
+    stripeLink: 
     'https://buy.stripe.com/test_8x25kDg5GfDO8S203cbfO02',
   },
   {
